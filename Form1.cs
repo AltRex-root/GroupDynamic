@@ -23,8 +23,8 @@ public partial class Form1 : Form
 
     private void ConfigureForm()
     {
-        saveFileDialog.Filter = "Text files|*.txt|C# files|*.cs|JSON files|*.json|XML files|*.xml|Markdown files|*.md|Log files|*.log|CSV files|*.csv|RTF files|*.rtf|All files|*.*";
-        openFileDialog.Filter = "Supported files|*.txt;*.cs;*.json;*.xml;*.md;*.log;*.csv;*.ini;*.config;*.rtf;*.pdf|Text files|*.txt;*.cs;*.json;*.xml;*.md;*.log;*.csv;*.ini;*.config|PDF files|*.pdf|RTF files|*.rtf|All files|*.*";
+        saveFileDialog.Filter = FileDialogFilters.Save;
+        openFileDialog.Filter = FileDialogFilters.Open;
 
         if (!string.IsNullOrWhiteSpace(appSettings.LastDirectory) && Directory.Exists(appSettings.LastDirectory))
         {
