@@ -1,10 +1,7 @@
-using System.Text;
-
 namespace GroupDynamic;
 
 public partial class Form1 : Form
 {
-    private readonly UTF8Encoding utf8WithoutBom = new(encoderShouldEmitUTF8Identifier: false);
     private string lastSearchText = string.Empty;
     private bool lastMatchCase;
     private bool lastWholeWord;
@@ -239,16 +236,7 @@ public partial class Form1 : Form
 
         try
         {
-            string extension = Path.GetExtension(targetPath).ToLowerInvariant();
-
-            if (extension == ".rtf")
-            {
-                tabState.Editor.SaveFile(targetPath, RichTextBoxStreamType.RichText);
-            }
-            else
-            {
-                File.WriteAllText(targetPath, tabState.Editor.Text, utf8WithoutBom);
-            }
+            DocumentSaveService.Save(targetPath, tabState.Editor);
 
             tabState.FilePath = targetPath;
             tabState.IsPdfDocument = false;
