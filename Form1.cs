@@ -512,9 +512,8 @@ public partial class Form1 : Form
             return;
         }
 
-        int lines = editor.Lines.Length;
-        int symbols = editor.TextLength;
-        editorInfoLabel.Text = $"Строк: {lines} | Символов: {symbols} | Вкладок: {documentTabControl.TabPages.Count}";
+        DocumentStatistics statistics = DocumentStatistics.From(editor.Text);
+        editorInfoLabel.Text = $"Строк: {statistics.Lines} | Символов: {statistics.Symbols} | Вкладок: {documentTabControl.TabPages.Count}";
     }
 
     private void UpdateStatus(string message)
